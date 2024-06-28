@@ -72,3 +72,6 @@ CREATE TABLE customers (
     country VARCHAR(255) NOT NULL,
     image_path VARCHAR(255)
 );
+
+##deploy to free hosting site
+https://selenious-swabs.000webhostapp.com/
