@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="../css/calculator.css">
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="result" readonly>
+        <button onclick="appendNumber(7)">7</button>
+        <button onclick="appendNumber(8)">8</button>
+        <button onclick="appendNumber(9)">9</button>
+        <button onclick="clearResult()">C</button>
+        <button onclick="appendNumber(4)">4</button>
+        <button onclick="appendNumber(5)">5</button>
+        <button onclick="appendNumber(6)">6</button>
+        <button onclick="appendOperation('+')">+</button>
+        <button onclick="appendNumber(1)">1</button>
+        <button onclick="appendNumber(2)">2</button>
+        <button onclick="appendNumber(3)">3</button>
+        <button onclick="appendOperation('-')">-</button>
+        <button onclick="appendNumber(0)">0</button>
+        <button onclick="calculateResult()">=</button>
+    </div>
+
+    <script>
+        let expression = '';
+        document.getElementById('result').value = 0;
+        function appendNumber(number) {
+            expression += number;
+            document.getElementById('result').value = expression;
+        }
+
+        function appendOperation(operation) {
+            expression += ' ' + operation + ' ';
+            document.getElementById('result').value = expression;
+        }
+
+        function clearResult() {
+            expression = '0';
+            document.getElementById('result').value = expression;
+        }
+
+        function calculateResult() {
+            try {
+                expression = eval(expression.replace(/\s+/g, ''));
+                document.getElementById('result').value = expression;
+            } catch (error) {
+                document.getElementById('result').value = 'Error';
+                expression = '';
+            }
+        }
+    </script>
+</body>
+</html>

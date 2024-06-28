@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Share</title>
+    <link rel="stylesheet" href="../css/screenshare.css">
+    <style>
+        video {
+            max-width: 100%;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Screen Share Utility</h2>
+    <p>This feature requires Google Chrome for screen sharing.</p>
+    <button id="startButton">Start Screen Share</button>
+    <video id="screenVideo" autoplay></video>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const screenVideo = document.getElementById('screenVideo');
+
+        startButton.addEventListener('click', async () => {
+            try {
+                const displayStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                screenVideo.srcObject = displayStream;
+            } catch (err) {
+                console.error('Error: ' + err);
+            }
+        });
+    </script>
+</body>
+</html>
